@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>{% block title %} Welcome to ArtGallery {% endblock %}</h1>
+
+<table border=1>
+    <tr>
+        <th>State Ab</th>
+        <th>State Name</th>
+    </tr>
+    {% for item in result %}
+    <tr>
+        <td> {{ item[0] }} </td>
+        <td> {{ item[1] }} </td>
+        <td>
+            <a href=" /deletestate/{{ item[1] }}" class="btn btn-danger btn-xs">Delete</a>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+<h2> Add state </h2>
+
+<form method="POST" action="">
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            {{ form.csrf_token() }}
+            <label for=""> {{ form.statename.label }}</label>
+            {{ form.statename }}
+        </div>
+        <div class="form-group col-md-6">
+            {{ form.csrf_token() }}
+            <label for=""> {{ form.stateab.label }}</label>
+            {{ form.stateab }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary")}}
+        </div>
+    </div>
+</form>
+
+<h2> Update state </h2>
+<form method="POST" action="/updatestate">
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            {{ form.csrf_token() }}
+            <label> Old state name</label>
+            <input type="text" name="oldstatename">
+        </div>
+        
+        <div class="form-group col-md-4">
+            {{ form.csrf_token() }}
+            <label for=""> {{ form.statename.label }}</label>
+            {{ form.statename }}
+        </div>
+        <div class="form-group col-md-4">
+            {{ form.csrf_token() }}
+            <label for=""> {{ form.stateab.label }}</label>
+            {{ form.stateab }}
+        </div>
+        <div class="form-group">
+            {{ form.submit(class="btn btn-primary")}}
+        </div>
+    </div>
+</form>
+
+{% endblock %}
