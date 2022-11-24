@@ -2,7 +2,7 @@
 
 ## Overview
 
-Art Gallery application helps managing art gallery.
+An online web application that allows user to perform certain operations on the art gallery database.
 
 ### Prerequisites
 
